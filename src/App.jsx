@@ -13,7 +13,7 @@ const App = () => {
           <div className="logo-section">
             {/* Logo - using a placeholder image */}
             <img
-              src="/media/logo.png" // Path to the logo image
+              src="/src/media/logo.png" // Path to the logo image
               alt="Website Logo"
               className="website-logo"
               onError={(e) => { e.target.onerror = null; e.target.src="https://placehold.co/48x48/cccccc/333333?text=Error"; }}
