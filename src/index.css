@@ -1,25 +1,219 @@
-/* src/index.css
-  This file is for global CSS styles that apply across your entire React application.
-  It's typically imported once in your main entry file (e.g., src/main.jsx or src/index.jsx).
+/* src/index.css */
+
+/*
+  This file contains global CSS styles for your entire React application.
+  It's imported once in your main entry file (e.g., src/main.jsx).
+*/
+
+/*
+  Import Google Fonts. Using 'Inter' as a modern, readable sans-serif font.
+  You can replace this with any other font from Google Fonts.
 */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
 
-:root {
-  --primary-color: #4a90e2; /* Example primary color */
-  --secondary-color: #50e3c2; /* Example secondary color */
-  --background-color: #f5f5f5; /* Example background color */
-  --text-color: #333333; /* Example text color */
-  --font-size-base: 16px; /* Base font size */
-  --line-height-base: 1.5; /* Base line height */
-}
-
-
+/* --- CSS Reset and Base Styles --- */
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Inter', sans-serif;
-  box-sizing: border-box;
+  box-sizing: border-box; /* Ensures consistent box model */
+  font-family: 'Inter', sans-serif; /* Apply the imported font */
+  color: #333; /* Default text color */
+  background-color: #f3f4f6; /* Light gray background for the page */
   -webkit-font-smoothing: antialiased; /* Enhances font rendering on WebKit browsers */
-  -moz-osx-font-smoothing: grayscale;  /* Enhances font rendering on macOS Firefox */
+  -moz-osx-font-smoothing: grayscale; /* Enhances font rendering on macOS Firefox */
 }
 
+/* Flexbox utility for the main app container to enable sticky footer */
+.app-container {
+  min-height: 100vh; /* Takes at least the full viewport height */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Container for content within sections (e.g., header, main, footer) */
+.container {
+  max-width: 1200px; /* Max width for content */
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem; /* Equivalent to Tailwind's p-4 / px-4 on smaller screens */
+  padding-right: 1rem;
+}
+
+/* --- Header Styles --- */
+.main-header {
+  background-color: #2563eb; /* Blue-600 equivalent */
+  color: #fff;
+  padding: 1rem; /* Equivalent to Tailwind's p-4 */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Equivalent to Tailwind's shadow-md */
+  border-bottom-left-radius: 0.5rem; /* Equivalent to Tailwind's rounded-b-lg */
+  border-bottom-right-radius: 0.5rem;
+}
+
+.header-content {
+  display: flex;
+  flex-direction: column; /* Always stack logo/name and nav vertically */
+  align-items: center; /* Horizontally center the stacked items */
+  padding: 0 1rem; /* Adjust padding for inner content */
+}
+
+/* No specific media query for .header-content flex direction is needed here,
+   as it should always be 'column' for this layout */
+
+.logo-section {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Always center logo and name horizontally */
+  width: 100%; /* Full width on small screens */
+  margin-bottom: 1rem; /* Margin bottom to separate from nav */
+}
+
+@media (min-width: 768px) {
+  .logo-section {
+    width: auto; /* Allow section to shrink to content width on larger screens */
+    /* No change to justify-content needed here, it stays centered */
+  }
+}
+
+.website-logo {
+  width: 3rem; /* Equivalent to w-12 */
+  height: 3rem; /* Equivalent to h-12 */
+  border-radius: 50%; /* Equivalent to rounded-full */
+  margin-right: 1rem; /* Equivalent to mr-4 */
+  flex-shrink: 0; /* Prevents shrinking */
+}
+
+.website-name {
+  font-size: 1.875rem; /* Equivalent to text-3xl */
+  font-weight: 800; /* Equivalent to font-extrabold */
+  text-align: center; /* Always center the website name */
+  flex-grow: 1; /* Allows it to take available space */
+}
+
+/* No media query needed for text-align, as it should always be centered */
+
+/* --- Navigation Styles --- */
+.main-nav {
+  width: 100%; /* Full width on small screens */
+  margin-top: 1rem; /* Always provide margin from the logo/name section above */
+  display: flex;
+  justify-content: center; /* Always center nav links horizontally */
+}
+
+@media (min-width: 768px) {
+  .main-nav {
+    width: auto; /* Allow nav to shrink to content width on larger screens */
+    /* No change to margin-top or justify-content needed here */
+  }
+}
+
+.nav-list {
+  list-style: none; /* Remove bullet points */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column; /* Stack vertically on small screens */
+  gap: 0.5rem; /* Vertical spacing for stacked links */
+}
+
+@media (min-width: 768px) {
+  .nav-list {
+    flex-direction: row; /* Arrange horizontally on medium screens */
+    gap: 1rem; /* Horizontal spacing for inline links */
+  }
+}
+
+.nav-item {
+  /* No specific styles needed for list item itself, styles applied to link */
+}
+
+.nav-link {
+  display: block; /* Make the whole link area clickable */
+  padding: 0.5rem 0.75rem; /* Equivalent to px-3 py-2 */
+  border-radius: 0.375rem; /* Equivalent to rounded-md */
+  color: #fff;
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s ease; /* Equivalent to transition duration-300 */
+}
+
+.nav-link:hover {
+  background-color: #1d4ed8; /* Darker blue for hover */
+}
+
+/* --- Main Content Styles --- */
+.main-content {
+  flex-grow: 1; /* Allows content to take up available space, pushing footer down */
+  padding: 2rem; /* Equivalent to Tailwind's p-8 */
+  width: 100%; /* Ensure it takes full width */
+  max-width: 1200px; /* Consistent max-width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.content-section {
+  background-color: #fff;
+  padding: 1.5rem; /* Equivalent to p-6 */
+  border-radius: 0.5rem; /* Equivalent to rounded-lg */
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1); /* Equivalent to shadow-lg */
+  margin-bottom: 2rem; /* Equivalent to mb-8 */
+}
+
+.content-section.secondary-section {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Equivalent to shadow-md for secondary sections */
+}
+
+.section-title {
+  font-size: 1.875rem; /* Equivalent to text-3xl */
+  font-weight: 600; /* Equivalent to font-semibold */
+  color: #1d4ed8; /* Blue-700 equivalent */
+  margin-bottom: 1rem; /* Equivalent to mb-4 */
+}
+
+.section-subtitle {
+  font-size: 1.5rem; /* Equivalent to text-2xl */
+  font-weight: 600; /* Equivalent to font-semibold */
+  color: #4b5563; /* Gray-700 equivalent */
+  margin-bottom: 0.75rem; /* Equivalent to mb-3 */
+}
+
+.section-paragraph {
+  font-size: 1.125rem; /* Equivalent to text-lg */
+  line-height: 1.6; /* Equivalent to leading-relaxed */
+  margin-bottom: 1rem; /* Equivalent to mb-4 */
+}
+
+.next-steps-list {
+  list-style: disc; /* Set list style to disc */
+  list-style-position: inside; /* Puts bullets inside content flow */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Equivalent to space-y-2 */
+}
+
+.list-item {
+  /* No specific styles needed for list item itself */
+}
+
+/* --- Footer Styles --- */
+.main-footer {
+  background-color: #1e40af; /* Blue-800 equivalent */
+  color: #fff;
+  padding: 1rem; /* Equivalent to p-4 */
+  margin-top: 2rem; /* Equivalent to mt-8 */
+  border-top-left-radius: 0.5rem; /* Equivalent to rounded-t-lg */
+  border-top-right-radius: 0.5rem;
+}
+
+.footer-content {
+  text-align: center;
+  font-size: 0.875rem; /* Equivalent to text-sm */
+  padding: 0 1rem; /* Adjust padding for inner content */
+}
+.footer-content a {
+  color: #93c5fd; /* Light blue for links */
+  text-decoration: none; /* Remove underline */
+}
+.footer-content a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
