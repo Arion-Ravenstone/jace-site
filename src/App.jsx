@@ -1,11 +1,7 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.jsx'
-import { BrowserRouter } from 'react-router-dom'
-import './index.css'
+import React from 'react';
 
 // Main App component
-const MainApp = () => {
+const App = () => {
   return (
     // The main container for the entire application, using Tailwind CSS for full height and responsive design.
     // 'min-h-screen' ensures it takes at least the full viewport height.
@@ -133,4 +129,4 @@ const MainApp = () => {
   );
 };
 
-export default MainApp
+export default App; // Export the App component as the default export
